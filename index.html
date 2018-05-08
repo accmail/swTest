@@ -25,8 +25,7 @@
           userVisibleOnly: true //Always show notification when received
         })
         .then(function (subscription) {
-          toast('Subscribed successfully.');
-          console.info('Push notification subscribed.');
+          console.log('Push notification subscribed.');
           console.log(subscription);
           //saveSubscriptionID(subscription);
         })
