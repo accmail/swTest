@@ -28,7 +28,7 @@ self.addEventListener('notificationclick', function(event) {
     clients.openWindow('https://developers.google.com/web/')
   );
 });
-*/
+
 
 self.addEventListener('notificationclick', function (event) {
   //opens app
@@ -50,3 +50,4 @@ self.addEventListener('notificationclick', function (event) {
       return clients.openWindow('/');
   }));
 });
+*/
