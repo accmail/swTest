@@ -4,8 +4,36 @@
         .then(function() { 
           Notification.requestPermission().then((result)=>{
             console.log(result);
+            if(result === 'granted'){
+              getSubscription();
+            }
           })
+          
           console.log("Service Worker Registered#1");
          })
         .catch(err =>{console.log('error ocured '+ err);});
-    }</script><script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script><script type="text/javascript" src="polyfills.fa62713060e7012f88ea.bundle.js"></script><script type="text/javascript" src="main.1b6d367a5f340f1428c2.bundle.js"></script></body></html>
+    }
+    function getSubscription(){
+      navigator.serviceWorker.ready.then(function(registration) {
+        if (!registration.pushManager) {
+          alert('Your browser doesn\'t support push notification.');
+          return false;
+        }
+
+        //To subscribe `push notification` from push manager
+        registration.pushManager.subscribe({
+          userVisibleOnly: true //Always show notification when received
+        })
+        .then(function (subscription) {
+          toast('Subscribed successfully.');
+          console.info('Push notification subscribed.');
+          console.log(subscription);
+          //saveSubscriptionID(subscription);
+          changePushStatus(true);
+        })
+        .catch(function (error) {
+          changePushStatus(false);
+          console.error('Push notification subscription error: ', error);
+        });
+      })
+    }</script><script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script><script type="text/javascript" src="polyfills.fa62713060e7012f88ea.bundle.js"></script><script type="text/javascript" src="main.c8f85869046e0b688b33.bundle.js"></script></body></html>
