@@ -29,10 +29,8 @@
           console.info('Push notification subscribed.');
           console.log(subscription);
           //saveSubscriptionID(subscription);
-          changePushStatus(true);
         })
         .catch(function (error) {
-          changePushStatus(false);
           console.error('Push notification subscription error: ', error);
         });
       })
